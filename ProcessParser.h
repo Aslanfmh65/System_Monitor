@@ -359,14 +359,14 @@ int ProcessParser::getNumberOfRunningProcesses()
 }
 
 
-
 int ProcessParser::getTotalThreads()
 {
     string line;
     int result = 0;
     string name = "Threads:";
     vector<string>_list = ProcessParser::getPidList();
-    for (int i=0 ; i<_list.size();i++) {
+    for (int i=0 ; i<_list.size();i++) 
+    {
     string pid = _list[i];
     //getting every process and reading their number of their threads
     ifstream stream = Util::getStream((Path::basePath() + pid + Path::statusPath()));
@@ -377,7 +377,9 @@ int ProcessParser::getTotalThreads()
             vector<string> values(beg, end);
             result += stoi(values[1]);
             break;
+            }
         }
+    
     }
     return result;
 }
